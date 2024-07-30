@@ -1,6 +1,6 @@
 #Module 3 Bank_main.py
-import OS
-import CSV
+import os
+import csv
 
 month_total = 0 #setup counters to 0
 net_total = 0
@@ -9,8 +9,8 @@ mon_change = []
 months = []
 export_list = [] #established list for export
 
-Bank_main = os.path.join("UCI DA Class Folder","Homework","python-challenge","PyBank","Resources","budget_data.csv") #define import filepath
-with open(Bank_main) as csv_file: #open csv file
+bank_main = os.path.join("Resources","budget_data.csv") #define import filepath
+with open(bank_main) as csv_file: #open csv file
 	csv_reader = csv.reader(csv_file,delimiter=",") #read csv file
 	csv_header = next(csv_file) #skip header row
 	for row in csv_reader:
@@ -40,7 +40,10 @@ export_list.append(f'Average Change {Rounded_avg_change}')
 export_list.append(f'Greatest Increase in Profits: {Gincmonth} ${Gincprof}')
 export_list.append(f'Greatest Decrease in Profits: {Gdecmonth} ${Gdecprof}')
 
-output_file = os.path.join("UCI DA Class Folder","Homework","python-challenge","PyBank","Analysis","Financial_Analysis.txt") #define export file path
+for line in export_list:
+	print(line)
+
+output_file = os.path.join("Analysis","Financial_Analysis.txt") #define export file path
 with open(output_file, 'w') as file:
     for line in export_list:
         file.write(line + "\n") #write a new line for each item in the export list

@@ -6,7 +6,7 @@ vote_total = 0
 vote_count = {}
 export_list = []
 #define file path for importing data
-poll_main = os.path.join("UCI DA Class Folder","Homework","python-challenge","PyPoll","Resources","election_data.csv")
+poll_main = os.path.join("Resources","election_data.csv")
 with open(poll_main) as csvfile: #open the csv file
      csvreader = csv.reader(csvfile, delimiter=',') #read csv file
      csv_header = next(csvreader) #skip header row
@@ -30,8 +30,12 @@ win = max(vote_count, key=vote_count.get) #determine the winner and add to expor
 export_list.append("---------------------")
 export_list.append(f"Winner: {win}")
 export_list.append("---------------------")
+
+for line in export_list:
+	print(line)
+
 #define file path for exporting data
-output_file = os.path.join("UCI DA Class Folder","Homework","python-challenge","PyPoll","analysis","election_results.txt")
+output_file = os.path.join("analysis","election_results.txt")
 with open(output_file, 'w') as file:
     for line in export_list:
         file.write(line + "\n") #export to file path and separate onto different lines
